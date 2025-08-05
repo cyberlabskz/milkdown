@@ -9,6 +9,7 @@ import type { ListItemFeatureConfig } from './list-item'
 import type { PlaceholderFeatureConfig } from './placeholder'
 import type { TableFeatureConfig } from './table'
 import type { ToolbarFeatureConfig } from './toolbar'
+import type { FileUploadBlockConfig } from './scorm'
 
 /// The crepe editor feature flags.
 /// Every feature is enabled by default.
@@ -45,6 +46,8 @@ export enum CrepeFeature {
   Latex = 'latex',
 
   Iframe = 'iframe',
+
+  Scorm = 'Scorm',
 }
 
 export interface CrepeFeatureConfig {
@@ -59,6 +62,7 @@ export interface CrepeFeatureConfig {
   [CrepeFeature.Table]?: TableFeatureConfig
   [CrepeFeature.Latex]?: LatexFeatureConfig
   [CrepeFeature.Iframe]?: IframeFeatureConfig
+  [CrepeFeature.Scorm]?: FileUploadBlockConfig
 }
 
 export const defaultFeatures: Record<CrepeFeature, boolean> = {
@@ -73,4 +77,5 @@ export const defaultFeatures: Record<CrepeFeature, boolean> = {
   [CrepeFeature.Table]: true,
   [CrepeFeature.Latex]: true,
   [CrepeFeature.Iframe]: true,
+  [CrepeFeature.Scorm]: true,
 }

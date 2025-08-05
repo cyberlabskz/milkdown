@@ -96,6 +96,10 @@ interface BlockEditConfig {
       label: string
       icon: string
     } | null
+    fileUpload: {
+      label: string
+      icon: string
+    } | null
     math: {
       label: string
       icon: string

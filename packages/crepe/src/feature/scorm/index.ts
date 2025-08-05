@@ -464,7 +464,7 @@ export const fileUploadBlock: DefineFeature<FileUploadBlockConfig> = (
   }
 
   editor
-    .config(crepeFeatureConfig(CrepeFeature.FileUploadBlock))
+    .config(crepeFeatureConfig(CrepeFeature.Scorm))
     .config((ctx) => {
       ctx.set(fileUploadPlugin.key, defaultConfig)
     })

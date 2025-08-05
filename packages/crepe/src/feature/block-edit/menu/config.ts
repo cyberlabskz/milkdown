@@ -44,6 +44,7 @@ import {
 } from '../../../icons'
 import { GroupBuilder, type MenuItemGroup } from '../../../utils/group-builder'
 import { toggleIframeCommand } from '../../iframe/command'
+import { insertFileUploadBlockCommand } from '../../scorm'
 
 export function getGroups(
   filter?: string,
@@ -54,6 +55,7 @@ export function getGroups(
   const isLatexEnabled = flags?.includes(CrepeFeature.Latex)
   const isImageBlockEnabled = flags?.includes(CrepeFeature.ImageBlock)
   const isTableEnabled = flags?.includes(CrepeFeature.Table)
+  const isScormEnabled = flags?.includes(CrepeFeature.Scorm)
 
   const groupBuilder = new GroupBuilder<SlashMenuItem>()
   if (config?.textGroup !== null) {
@@ -336,6 +338,16 @@ export function getGroups(
           commands.call(selectTextNearPosCommand.key, {
             pos: from,
           })
+        },
+      })
+    }
+    if (config?.advancedGroup?.fileUpload !== null && isScormEnabled) {
+      advancedGroup.addItem('file-upload', {
+        label: config?.advancedGroup?.fileUpload?.label ?? 'File Upload',
+        icon: config?.advancedGroup?.fileUpload?.icon ?? functionsIcon, // Можешь заменить на специальную иконку
+        onRun: (ctx) => {
+          const commands = ctx.get(commandsCtx)
+          commands.call(insertFileUploadBlockCommand.key)
         },
       })
     }
