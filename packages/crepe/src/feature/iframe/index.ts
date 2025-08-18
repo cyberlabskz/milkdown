@@ -39,6 +39,7 @@ export const iframeNodeSchema = $nodeSchema(iframeId, () => ({
     src: { default: null },
     width: { default: '1000' }, // Add width attribute with a default value
     height: { default: '500' }, // Add height attribute with a default value
+    allowfullscreen: { default: true },
   },
   parseDOM: [
     {
